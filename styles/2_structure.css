@@ -3,3 +3,9 @@ main, footer {
   margin: 0 auto;
   padding: 2rem;
 }
+
+@media (max-width: 25rem) {
+  main, footer {
+    padding: 1rem;
+  }
+}

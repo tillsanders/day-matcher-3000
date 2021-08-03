@@ -48,3 +48,15 @@ a {
   display: inline-block;
   padding: 0.5em;
 }
+
+@media (max-width: 25rem) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+  h1, h2 {
+    margin: 1.5em 0 1em 0;
+  }
+}
