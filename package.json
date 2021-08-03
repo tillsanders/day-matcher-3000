@@ -4,11 +4,15 @@
   "description": "When planning children's and youth camps, it is organizationally helpful if the managers do not have to take over the day's leadership for several days in a row. The DayMatcher 3000 helps with the optimal distribution.",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mkdir -p dist && cp -R styles dist/styles && cp index.html dist/ && esbuild scripts/main.js --bundle --minify --sourcemap --outfile=dist/scripts/main.js"
   },
   "author": "Till Sanders <mail@till-sanders.de>",
   "license": "GPL-3.0",
   "dependencies": {
     "alpinejs": "^3.2.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.12.17"
   }
 }

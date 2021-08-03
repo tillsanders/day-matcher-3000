@@ -38,8 +38,8 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
-      - name: Prepare deployment
-        run: mkdir dist && cp -R scripts dist/scripts && cp -R styles dist/styles && cp index.html dist/ && cp -R node_modules dist/node_modules
+      - name: Build
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         if: success()
