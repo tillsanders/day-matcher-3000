@@ -7,7 +7,16 @@ input, textarea, select {
   appearance: none;
 }
 
-input:hover, textarea:hover, select:hover {
+input, textarea {
+  width: 100%;
+}
+
+::placeholder {
+  font-style: italic;
+  color: #CCC;
+}
+
+input:hover, textarea:hover, select:hover,  {
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 2px #CDC;
 }
 
