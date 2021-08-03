@@ -5,5 +5,6 @@
 ## Development
 
 ```
+npm ci
 http-server
 ```
