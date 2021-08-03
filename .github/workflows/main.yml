@@ -38,6 +38,9 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
+      - name: Prepare deployment
+        run: mkdir dist && cp -R scripts dist/scripts && cp -R styles dist/styles && cp index.html dist/
+
       - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
