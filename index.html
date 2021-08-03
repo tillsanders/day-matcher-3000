@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bei der Planung von Kinder- und Jugendfreizeiten ist es organisatorisch von Vorteil, wenn die Leitenden nicht mehrere Tage hintereinander die Hauptleitung übernehmen müssen. Der DayMatcher 3000 hilft bei der optimalen Verteilung.">
+  <title>DayMatcher 3000</title>
+  <link rel="stylesheet" href="/styles/0_base.css" />
+  <link rel="stylesheet" href="/styles/1_typography.css" />
+  <link rel="stylesheet" href="/styles/2_structure.css" />
+  <link rel="stylesheet" href="/styles/3_table.css" />
+  <link rel="stylesheet" href="/styles/4_form.css" />
+  <script src="/scripts/main.js" defer type="module"></script>
+</head>
+<body>
+  <main x-data="matcher">
+    <h1>DayMatcher 3000 🗓</h1>
+    <p>Bei der Planung von Kinder- und Jugendfreizeiten ist es organisatorisch von Vorteil, wenn die Leitenden nicht mehrere Tage hintereinander die Hauptleitung übernehmen müssen. Der <strong>DayMatcher 3000</strong> hilft bei der optimalen Verteilung.</p>
+    
+    <h2>1. Tagesplanung</h2>
+    <p>Füge hier die Tage der geplanten Aktion hinzu. Wenn einzelne Tage bereits fest mit einem Leitungsteam geplant sind, kannst du auch das entsprechend eintragen. Ansonsten lässt du das Feld leer, damit der DayMatcher automatisch ein Leitungsteam auswählt. Du kannst mehrere Namen mit Kommata trennen.</p>
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Programm</th>
+            <th colspan="2">Leitende</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template x-for="(day, index) in days">
+            <tr>
+              <td x-text="index + 1"></td>
+              <td>
+                <input x-bind:name="'program-' + index" x-model="days[index].program" placeholder="Geländespiel" />
+              </td>
+              <td>
+                <input x-bind:name="'leaders-' + index" x-model="days[index].leaders" placeholder="Anna, Till" />
+              </td>
+              <td>
+                <button x-on:click="days.splice(index, 1)" class="icon">🗑</button>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+      <button x-on:click="days.push({ program: '', leaders: '' })">Tag hinzufügen</button>
+    </section>
+    <section>
+      <h2>2. Leitungsteams</h2>
+      <p>Lege hier eine Liste mit freien Leitungsteams an, die der <strong>DayMatcher 3000</strong> auf die freien Tage verteilen soll. Du kannst mehrere Namen mit Kommata trennen.</p>
+      <ul class="leaders">
+        <template x-for="(leader, index) in free">
+          <li>
+            <span x-text="leader"></span>
+            <button x-on:click="free.splice(index, 1)" class="icon">🗑</button>
+          </li>
+        </template>
+      </ul>
+      <form x-on:submit.prevent="if (newTeam.length > 0) { free.push(newTeam); newTeam = ''; }" x-data="{ newTeam: '' }">
+        <input x-model="newTeam" />
+        <button type="submit">Leitungsteam hinzufügen</button>
+      </form>
+    </section>
+    <section>
+      <h2>3. Ergebnis</h2>
+      <p>Der <strong>DayMatcher 3000</strong> verteilt auf Knopfdruck die Leitungsteams auf die freien Tage. Das System macht dies nach dem Zufallsprinzip, sodass jedes Mal ein anderes Ergebnis herauskommen kann.</p>
+      <p class="error" x-show="free.length !== freeDays">
+        Du benötigst genauso viele freie Leitungsteams wie unvergebene Tagesleitungen.
+      </p>
+      <table x-show="solution.length > 0">
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Programm</th>
+            <th>Leitende</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template x-for="(day, index) in solution">
+            <tr>
+              <td x-text="index + 1"></td>
+              <td>
+                <input x-bind:name="'program-' + index" x-model="days[index].program" placeholder="Geländespiel" />
+              </td>
+              <td>
+                <input x-bind:name="'leaders-' + index" x-model="day.join(', ')" placeholder="Anna, Till" />
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+
+      <label for="options-pause">Pause nach Tagesleitung</label>
+      <select name="options-pause" x-model="options.pause">
+        <option value="0">0 Tage</option>
+        <option value="1">1 Tag</option>
+        <option value="2">2 Tage</option>
+        <option value="3">3 Tage</option>
+      </select>
+      <br><br>
+      <button x-bind:disabled="free.length !== freeDays" x-on:click="solve()" type="button">Teams verteilen</button>
+    </section>
+  </main>
+  <footer>
+    <div id="smallprint">
+      <a href="https://plausible.io/tillsanders.github.io%2Fday-matcher-3000">Statistik</a>
+      <a href="https://till-sanders.de/privacy">Datenschutz</a>
+      <a href="https://till-sanders.de/about">Impressum</a>
+      <a href="https://github.com/tillsanders/day-matcher-3000" title="Projekt auf GitHub">GitHub</a>
+    </div>
+  </footer>
+
+  <script defer data-domain="tillsanders.github.io/day-matcher-3000" src="https://plausible.io/js/plausible.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+html, input, button, select {
+  font-size: 1.125rem;
+  color: #222;
+}
+
+h1, h2 {
+  margin: 3em 0 1em 0;
+}
+
+h1 + p {
+  font-size: 1.25rem;
+}
+
+ul.leaders {
+  list-style-type: none;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+ul.leaders li {
+  background: #FFF;
+  border-radius: 3em;
+  display: inline-block;
+  padding: 0.25em 0 0.25em 1em;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+p.error {
+  display: inline-block;
+  padding: 0.4em 0.5em;
+  border: 1px solid #700;
+  border-radius: 5px;
+  color: #B00;
+}
+
+a {
+  color: currentColor;
+}
+
+#smallprint {
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+#smallprint a {
+  display: inline-block;
+  padding: 0.5em;
+}

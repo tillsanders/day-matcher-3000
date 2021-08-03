@@ -1,0 +1,14 @@
+html {
+  font-family:  sans-serif;
+  line-height: 1.4;
+  box-sizing: border-box;
+  background: #F9F9F9;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+}

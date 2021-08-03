@@ -1,0 +1,9 @@
+table {
+  width: 100%;
+  text-align: left;
+  margin: 2rem 0;
+}
+
+table input {
+  width: 100%;
+}
