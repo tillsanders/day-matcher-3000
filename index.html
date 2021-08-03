@@ -59,7 +59,8 @@
         </template>
       </ul>
       <form x-on:submit.prevent="if (newTeam.length > 0) { free.push(newTeam); newTeam = ''; }" x-data="{ newTeam: '' }">
-        <input x-model="newTeam" />
+        <input x-model="newTeam" /><br>
+        <br>
         <button type="submit">Leitungsteam hinzufügen</button>
       </form>
     </section>
