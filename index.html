@@ -15,7 +15,9 @@
 <body>
   <main x-data="matcher">
     <h1>DayMatcher 3000 🗓</h1>
-    <p>Bei der Planung von Kinder- und Jugendfreizeiten ist es organisatorisch von Vorteil, wenn die Leitenden nicht mehrere Tage hintereinander die Hauptleitung übernehmen müssen. Der <strong>DayMatcher 3000</strong> hilft bei der optimalen Verteilung.</p>
+    <p>Bei der Planung von Kinder- und Jugendfreizeiten ist es organisatorisch von Vorteil, wenn die Leitenden nicht mehrere Tage hintereinander die Hauptleitung übernehmen müssen. Der <strong>DayMatcher 3000</strong> hilft bei der zeitsparenden und fairen Verteilung von Tagesleitung, Küchendienst und Putzdienst.</p>
+
+    <p>Das System erstellt als Ergebnis eine Tabelle mit den optimal verteilten Tagesleitungen. Auch die Aufteilung zu Küchendienst und Putzdienst wird so geregelt: Wer an dem einen Tag Tagesleitung ist, kümmert sich am Tag darauf um die Küche und am dritten Tag um den Putzdienst. Der Küchendienst am Abend wird jedoch im Idealfall von der Tagesleitung übernommen. So kann die restliche Leiterrunde in der Zeit den nächsten Tag besprechen, da dieser für die aktuelle Tagesleitung weniger relevant ist, da sie den Tag in der Küche verbringen wird.</p>
     
     <h2>1. Tagesplanung</h2>
     <p>Füge hier die Tage der geplanten Aktion hinzu. Wenn einzelne Tage bereits fest mit einem Leitungsteam geplant sind, kannst du auch das entsprechend eintragen. Ansonsten lässt du das Feld leer, damit der DayMatcher automatisch ein Leitungsteam auswählt. Du kannst mehrere Namen mit Kommata trennen.</p>
@@ -31,7 +33,7 @@
         <tbody>
           <template x-for="(day, index) in days">
             <tr>
-              <td x-text="index + 1"></td>
+              <th x-text="index + 1"></th>
               <td>
                 <input x-bind:name="'program-' + index" x-model="days[index].program" placeholder="Geländespiel" />
               </td>
@@ -75,18 +77,26 @@
           <tr>
             <th>Tag</th>
             <th>Programm</th>
-            <th>Leitende</th>
+            <th>Tagesleitung</th>
+            <th>Küchenteam</th>
+            <th>Putzteam</th>
           </tr>
         </thead>
         <tbody>
           <template x-for="(day, index) in solution">
             <tr>
-              <td x-text="index + 1"></td>
+              <th x-text="index + 1"></th>
               <td>
-                <input x-bind:name="'program-' + index" x-model="days[index].program" placeholder="Geländespiel" />
+                <span class="fake-input" x-text="days[index].program"></span>
               </td>
               <td>
-                <input x-bind:name="'leaders-' + index" x-model="day.join(', ')" placeholder="Anna, Till" />
+                <span class="fake-input" x-text="day.join(', ')"></span>
+              </td>
+              <td>
+                <span class="fake-input" x-text="getDay(solution, index, -1).join(', ')"></span>
+              </td>
+              <td>
+                <span class="fake-input" x-text="getDay(solution, index, -2).join(', ')"></span>
               </td>
             </tr>
           </template>
@@ -102,6 +112,7 @@
       </select>
       <br><br>
       <button x-bind:disabled="free.length !== freeDays" x-on:click="solve()" type="button">Teams verteilen</button>
+      <p><small>Tipp: Leitungsteams, die über mehrere Tage hintereinander bestehen bleiben sollen, einfach als einen Tag eintragen. Die Ergebnis-Tabelle kann kopiert und in Office-Programme übertragen werden.</small></p>
     </section>
   </main>
 

@@ -1,4 +1,5 @@
-input, textarea, select {
+input, .fake-input, textarea, select {
+  display: inline-block;
   background: #FFF;
   border: 0;
   padding: 0.5em;
@@ -7,7 +8,7 @@ input, textarea, select {
   appearance: none;
 }
 
-input, textarea {
+input, .fake-input, textarea {
   width: 100%;
 }
 
@@ -55,8 +56,4 @@ button.icon:focus, button.icon:hover {
 li > button.icon {
   padding-top: 0;
   padding-bottom: 0;
-}
-
-select {
-
 }

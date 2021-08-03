@@ -4,8 +4,12 @@ table {
   margin: 2rem 0;
 }
 
-table input {
+table input, table .fake-input {
   width: 100%;
+}
+
+tbody th {
+  text-align: center;
 }
 
 @media (max-width: 35rem) {

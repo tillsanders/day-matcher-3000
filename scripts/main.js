@@ -56,6 +56,17 @@ Alpine.data('matcher', function () {
     },
 
     /**
+     * Return a day from an array of days, relative to a given index.
+     * @param  {Array} days
+     * @param  {Number} currentIndex
+     * @param  {Number} relativePosition The offset, relative to currentIndex.
+     * @return {Array}
+     */
+    getDay: function (days, currentIndex, relativePosition) {
+      return days[(currentIndex + days.length + relativePosition) % days.length]
+    },
+
+    /**
      * Determines wether a given solution actually meets the requirements.
      * @param  {Array}  days    The days with optionally pre-filled (fixed) teams.
      * @param  {Array}  free    The available teams to be filled.
