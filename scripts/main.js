@@ -1,4 +1,4 @@
-import Alpine from '/node_modules/alpinejs/dist/module.esm.js'
+import Alpine from '../node_modules/alpinejs/dist/module.esm.js'
 
 /**
  * Helper function to determine wether two arrays include any of the same items.
