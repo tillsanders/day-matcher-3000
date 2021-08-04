@@ -133,7 +133,11 @@ Alpine.data('matcher', function () {
         solution[randomDayA] = pairB
         solution[randomDayB] = pairA
       } while(!(this.isOkay(solution, free, this.options) && free.length === 0 || counter > 100))
-      this.solution = solution
+      if (this.isOkay(solution, free, this.options)) {
+        this.solution = solution
+        return
+      }
+      alert('Keine Lösung gefunden. Setze weniger feste Leitungsteams ein oder verringere die Pause.')
     },
   }
 })
