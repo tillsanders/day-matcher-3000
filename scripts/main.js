@@ -109,6 +109,7 @@ Alpine.data('matcher', function () {
       let solution = [...days]
       let free = this.free.map(pair => leaderStringToArray(pair))
       let counter = 0
+      const maxRounds = days.length * 10
       do {
         counter += 1
 
@@ -132,7 +133,7 @@ Alpine.data('matcher', function () {
         }
         solution[randomDayA] = pairB
         solution[randomDayB] = pairA
-      } while(!(this.isOkay(solution, free, this.options) && free.length === 0 || counter > 100))
+      } while(!(this.isOkay(solution, free, this.options) && free.length === 0 || counter > maxRounds))
       if (this.isOkay(solution, free, this.options)) {
         this.solution = solution
         return
