@@ -87,7 +87,7 @@
             <tr>
               <th x-text="index + 1"></th>
               <td>
-                <span class="fake-input" x-text="days[index].program"></span>
+                <span class="fake-input" x-text="days[index].program.length > 0 ? days[index].program || '–' : '–'"></span>
               </td>
               <td>
                 <span class="fake-input" x-text="day.join(', ')"></span>
