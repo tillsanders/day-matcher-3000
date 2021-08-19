@@ -1,0 +1,32 @@
+table {
+  width: 100%;
+  text-align: left;
+  margin: 2rem 0;
+}
+
+table input, table .fake-input {
+  width: 100%;
+}
+
+tbody th {
+  text-align: center;
+}
+
+@media (max-width: 35rem) {
+  table, thead, tbody {
+    display: block;
+    text-align: center;
+  }
+  tr {
+    display: block;
+    margin: 1em 0;
+  }
+  tr + tr {
+    border-top: 1px solid #CCC;
+    padding-top: 1em;
+  }
+  td, th {
+    display: block;
+    margin: 0.3em 0;
+  }
+}
